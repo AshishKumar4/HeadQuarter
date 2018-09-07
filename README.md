@@ -1,4 +1,3 @@
-# Author: WhiteOracle
 
 This is my own Command And Control Center. basically, fire up a simple http server and make this and the download spot to download backdoors into pwned systems
 to get persistant access. This is a Post Exploitation Software Bundle.
